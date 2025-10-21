@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import axios from "axios";
 import { apiResponse, MovieList } from "@/app/types/types";
 
@@ -11,7 +11,7 @@ const fetchMovies = async () => {
     id: movie.id,
     title: movie.title,
     description: movie.overview,
-    image: movie.poster_path,
+    image: `https://image.tmdb.org/t/p/original/${movie.poster_path}`,
     language: movie.original_language,
     year: Number(movie.release_date.split("-")[0]),
     popularity: Number(movie.vote_average.toFixed(2)),
@@ -20,7 +20,7 @@ const fetchMovies = async () => {
   return movies;
 };
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const movies: MovieList = await fetchMovies();
     return NextResponse.json(movies, { status: 200 });
