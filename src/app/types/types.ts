@@ -26,3 +26,28 @@ export type apiResponse = {
   vote_average: number;
   vote_count: number;
 };
+
+export type MovieDetails = {
+  id: number;
+  budget: number;
+  genres: [
+    {
+      id: number;
+      name: string;
+    }
+  ];
+  origin_country: [object];
+  original_language: "en";
+  overview: string;
+  poster_path: string;
+  production_companies: [
+    {
+      id: number;
+      name: string;
+    }
+  ];
+  release_date: string;
+  revenue: number;
+  status: string;
+  title: string;
+};
